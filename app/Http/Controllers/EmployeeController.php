@@ -8,18 +8,15 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class EmployeeController extends Controller
 {
-    public function exportPDF()
+    public function index(Request $request)
     {
-        $employees = Employee::all();
-        $pdf = PDF::loadView('employees.pdf', compact('employees'));
-        return $pdf->download('empleados.pdf');
-    }
+        $orderBy = $request->get('sort', 'id');
 
-    public function index()
-    {
-        $employees = Employee::all();
+        $employees = Employee::orderBy($orderBy)->get();
+
         return view('employees.index', compact('employees'));
     }
+
 
     public function create()
     {

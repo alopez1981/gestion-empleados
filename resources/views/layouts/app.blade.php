@@ -138,12 +138,14 @@
             margin-top: 20px;
         }
 
-        /* Footer */
         footer {
             background-color: #333;
             color: #fff;
             padding: 20px;
             text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
         }
 
         footer a {
@@ -163,6 +165,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('images/Sticker_21.png') }}" alt="Logo" style="height: 50px;">
+        </a>
         <a class="navbar-brand" href="#">Gestión RRHH</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
@@ -180,5 +185,13 @@
 <div class="container">
     @yield('content')
 </div>
+<div style="text-align: right; padding: 20px;">
+    <img src="{{ asset('images/sticker_jeep.png') }}" alt="Jeep" style="max-width: 300px;">
+</div>
+
+
 </body>
+<footer>
+    <p>&copy; 2024 Hoy-Voy. Todos los derechos reservados.</p>
+</footer>
 </html>

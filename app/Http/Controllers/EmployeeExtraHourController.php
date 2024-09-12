@@ -12,9 +12,20 @@ class EmployeeExtraHourController extends Controller
     public function index($employee_id)
     {
         $employee = Employee::findOrFail($employee_id);
-        $extraHours = $employee->extraHours;
-        return view('employee_extra_hours.index', compact('employee', 'extraHours'));
+
+        $extraHours = $employee->extraHours()->with('extraConcept')->get();
+
+        $totalHoras = 0;
+        $totalImporte = 0;
+
+        foreach ($extraHours as $extraHour) {
+            $totalHoras += $extraHour->cantidad; // Suma de horas
+            $totalImporte += $extraHour->cantidad * $extraHour->extraConcept->valor; // Suma de importes
+        }
+
+        return view('employee_extra_hours.index', compact('employee', 'extraHours', 'totalHoras', 'totalImporte'));
     }
+
 
     public function create($employee_id)
     {
