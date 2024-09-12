@@ -6,7 +6,7 @@ use App\Http\Controllers\ExtraConceptController;
 use App\Http\Controllers\EmployeeExtraHourController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('employees.index');
 });
 Route::resource('employees', EmployeeController::class);
 Route::resource('extra_concepts', ExtraConceptController::class);
