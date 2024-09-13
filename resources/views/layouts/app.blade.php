@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Trabajadores</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Tipografía general */
@@ -143,9 +142,11 @@
             color: #fff;
             padding: 20px;
             text-align: center;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+            position: fixed; /* Cambia position a fixed */
+            bottom: 0; /* Posiciona el footer en la parte inferior de la ventana */
+            left: 0;
+            width: 100%; /* Asegura que el footer ocupe todo el ancho */
+            z-index: 1000; /* Asegura que esté encima de otros elementos si es necesario */
         }
 
         footer a {
@@ -157,6 +158,83 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Asegurarnos de que el contenido no esté superpuesto por el footer */
+        body {
+            padding-bottom: 60px; /* Espacio suficiente para que el contenido no sea cubierto por el footer */
+        }
+
+        .pagination-container .pagination {
+            display: flex !important; /* Forzar que solo se muestre la paginación con display flex */
+        }
+
+        .hidden {
+            display: none !important; /* Asegurarte de ocultar cualquier otro elemento innecesario */
+        }
+
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination .page-link i {
+            display: none; /* Si tienes iconos de un set como FontAwesome, ocultalos */
+        }
+
+
+        .pagination li a,
+        .pagination li span {
+            display: inline-block;
+            padding: 8px 16px; /* Ajuste de tamaño para los botones */
+            font-size: 14px; /* Tamaño de fuente adecuado */
+            color: #007bff;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .pagination li a:hover {
+            background-color: #f8e600; /* Color hover */
+            color: #000; /* Texto en hover */
+        }
+
+        .pagination li.active span {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        .pagination .disabled span {
+            background-color: #e9ecef;
+            color: #6c757d;
+            border-color: #dee2e6;
+        }
+
+        /* Controlar el tamaño de los iconos prev/next */
+        .pagination .page-link {
+            font-size: 4px; /* Controlar el tamaño de los íconos */
+            padding: 8px 2px; /* Tamaño adecuado de los botones */
+        }
+
+        .pagination .page-link i {
+            font-size: 4px; /* Asegurarse de que los íconos tengan un tamaño adecuado */
+        }
+
+        img {
+            max-width: 100%; /* Asegura que las imágenes no se desborden */
+            height: auto; /* Mantén la proporción de las imágenes */
+        }
+
+
+
+
 
     </style>
 
@@ -184,11 +262,8 @@
 
 <div class="container">
     @yield('content')
-</div>
-<div style="text-align: right; padding: 20px;">
     <img src="{{ asset('images/sticker_jeep.png') }}" alt="Jeep" style="max-width: 300px;">
 </div>
-
 
 </body>
 <footer>

@@ -46,8 +46,8 @@
         </tbody>
     </table>
 
-    <!-- Mostrar enlaces de paginación -->
-    <div class="mt-3">
+    <!-- Mostrar enlaces de paginación con estilo -->
+    <div class="pagination-container">
         {{ $employees->links() }}
     </div>
 

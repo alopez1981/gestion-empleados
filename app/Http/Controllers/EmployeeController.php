@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade as PDF;
 
 class EmployeeController extends Controller
 {

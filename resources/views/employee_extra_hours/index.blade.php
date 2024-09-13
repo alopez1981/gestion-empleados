@@ -18,6 +18,7 @@
             <th>Cantidad </th>
             <th>Valor por Hora</th>
             <th>Importe</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -27,6 +28,14 @@
                 <td>{{ $extraHour->cantidad }}</td>
                 <td>{{ number_format($extraHour->extraConcept->valor, 2) }} €</td>
                 <td>{{ number_format($extraHour->cantidad * $extraHour->extraConcept->valor, 2) }} €</td>
+                <td>
+                    <!-- Formulario para eliminar la hora extra -->
+                    <form action="{{ route('employee_extra_hours.destroy', [$employee->id, $extraHour->id]) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>
