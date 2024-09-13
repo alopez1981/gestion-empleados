@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellidos');
             $table->string('dni')->unique();
-            $table->string('rol'); // Administrador, Profesor, Atención al alumno, etc.
+            $table->string('rol');
             $table->string('centro');
             $table->timestamps();
         });

@@ -15,7 +15,7 @@
         <thead>
         <tr>
             <th>Concepto</th>
-            <th>Cantidad de Horas</th>
+            <th>Cantidad </th>
             <th>Valor por Hora</th>
             <th>Importe</th>
         </tr>

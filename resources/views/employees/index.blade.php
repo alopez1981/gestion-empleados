@@ -46,6 +46,11 @@
         </tbody>
     </table>
 
+    <!-- Mostrar enlaces de paginación -->
+    <div class="mt-3">
+        {{ $employees->links() }}
+    </div>
+
     <!-- Mensaje de éxito al realizar una operación -->
     @if (session('success'))
         <div class="alert alert-success mt-3">
