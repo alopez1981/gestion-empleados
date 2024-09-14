@@ -6,6 +6,8 @@ use App\Models\Employee;
 use App\Models\EmployeeExtraHour;
 use App\Models\ExtraConcept;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\EmployeeExtraHoursExport;
 
 class EmployeeExtraHourController extends Controller
 {
@@ -53,6 +55,13 @@ class EmployeeExtraHourController extends Controller
         $extraHour->delete();
 
         return redirect()->route('employee_extra_hours.index', $employee_id)->with('success', 'Hora extra eliminada con éxito');
+    }
+
+    public function exportToExcel($employee_id)
+    {
+        $employee = Employee::findOrFail($employee_id);
+
+        return Excel::download(new EmployeeExtraHoursExport($employee), 'horas_extras_' . $employee->nombre . '.xlsx');
     }
 }
 

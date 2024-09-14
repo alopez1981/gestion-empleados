@@ -46,6 +46,12 @@
         <h3>Total de Horas Extras: {{ $totalHoras }} horas</h3>
         <h3>Importe Total: {{ number_format($totalImporte, 2) }} €</h3>
     </div>
-
+    <div class="d-flex justify-content-start mb-3">
+        <!-- Botón para añadir horas extras -->
         <a href="{{ route('employee_extra_hours.create', $employee->id) }}" class="btn btn-primary">Añadir Horas Extras</a>
+
+        <!-- Botón para descargar el Excel -->
+        <a href="{{ route('employee_extra_hours.export', $employee->id) }}" class="btn btn-success">Descargar Excel</a>
+    </div>
+
 @endsection
