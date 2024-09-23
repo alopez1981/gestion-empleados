@@ -16,4 +16,4 @@ Route::get('employees/{employee}/extra_hours/create', [EmployeeExtraHourControll
 Route::post('employees/{employee}/extra_hours', [EmployeeExtraHourController::class, 'store'])->name('employee_extra_hours.store');
 Route::delete('employees/{employee}/extra_hours/{extraHour}', [EmployeeExtraHourController::class, 'destroy'])->name('employee_extra_hours.destroy');
 Route::get('/employees/{employee}/extra_hours/export', [EmployeeExtraHourController::class, 'exportToExcel'])->name('employee_extra_hours.export');
-
+Route::get('/extra_hours/export_total_by_center', [EmployeeExtraHourController::class, 'exportTotalExtrasByCenter'])->name('extra_hours.export_total_by_center');

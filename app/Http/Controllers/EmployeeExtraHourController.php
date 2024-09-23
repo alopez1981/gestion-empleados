@@ -8,6 +8,7 @@ use App\Models\ExtraConcept;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\EmployeeExtraHoursExport;
+use App\Exports\TotalExtrasPerCenterExport;
 
 class EmployeeExtraHourController extends Controller
 {
@@ -62,6 +63,11 @@ class EmployeeExtraHourController extends Controller
         $employee = Employee::findOrFail($employee_id);
 
         return Excel::download(new EmployeeExtraHoursExport($employee), 'horas_extras_' . $employee->nombre . '.xlsx');
+    }
+
+    public function exportTotalExtrasByCenter()
+    {
+        return Excel::download(new TotalExtrasPerCenterExport, 'total_extras_por_centro.xlsx');
     }
 }
 

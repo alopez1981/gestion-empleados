@@ -11,7 +11,7 @@ class EmployeeController extends Controller
     {
         $orderBy = $request->get('sort', 'id');
 
-        $employees = Employee::orderBy($orderBy)->paginate(10);
+        $employees = Employee::orderBy($orderBy)->paginate(15);
 
         return view('employees.index', compact('employees'));
     }
